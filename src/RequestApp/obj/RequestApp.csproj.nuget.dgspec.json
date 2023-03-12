@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "H:\\RequestApp\\RequestApp\\RequestApp\\RequestApp.csproj": {}
+    "H:\\RequestApp\\src\\RequestApp\\RequestApp.csproj": {}
   },
   "projects": {
-    "H:\\RequestApp\\RequestApp\\RequestApp\\RequestApp.csproj": {
+    "H:\\RequestApp\\src\\RequestApp\\RequestApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\RequestApp\\RequestApp\\RequestApp\\RequestApp.csproj",
+        "projectUniqueName": "H:\\RequestApp\\src\\RequestApp\\RequestApp.csproj",
         "projectName": "RequestApp",
-        "projectPath": "H:\\RequestApp\\RequestApp\\RequestApp\\RequestApp.csproj",
+        "projectPath": "H:\\RequestApp\\src\\RequestApp\\RequestApp.csproj",
         "packagesPath": "C:\\Users\\mateu\\.nuget\\packages\\",
-        "outputPath": "H:\\RequestApp\\RequestApp\\RequestApp\\obj\\",
+        "outputPath": "H:\\RequestApp\\src\\RequestApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mateu\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Flunt": {
+              "target": "Package",
+              "version": "[2.0.5, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.14, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.3, )"
