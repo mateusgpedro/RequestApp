@@ -178,3 +178,5 @@ H:\RequestApp\src\RequestApp\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.
 H:\RequestApp\src\RequestApp\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 H:\RequestApp\src\RequestApp\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
 H:\RequestApp\src\RequestApp\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
+H:\RequestApp\src\RequestApp\bin\Debug\net6.0\Dapper.dll
+H:\RequestApp\src\RequestApp\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

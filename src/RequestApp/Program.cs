@@ -5,6 +5,7 @@ using RequestApp.Endpoints.Employees;
 using RequestApp.Infra.Data;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.AspNetCore.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,7 +20,15 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
     options.Password.RequiredLength = 4;
 }).AddEntityFrameworkStores<ApplicationDBContext>();
 
-builder.Services.AddAuthorization();
+builder.Services.AddAuthorization(options =>
+{
+    options.FallbackPolicy = new AuthorizationPolicyBuilder()
+        .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
+        .RequireAuthenticatedUser()
+        .Build();
+    options.AddPolicy("EmployeePolicy", p => 
+    p.RequireAuthenticatedUser().RequireClaim("EmployeeCode"));
+});
 builder.Services.AddAuthentication(x =>
 {
     x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -32,6 +41,7 @@ builder.Services.AddAuthentication(x =>
         ValidateAudience = true,
         ValidateLifetime = true,
         ValidateIssuerSigningKey = true,
+        ClockSkew = TimeSpan.Zero,
         ValidIssuer = builder.Configuration["JwtBearerTokenSettings:Issuer"],
         ValidAudience = builder.Configuration["JwtBearerTokenSettings:Audience"],
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("JwtBearerTokenSettings:SecretKey"))
