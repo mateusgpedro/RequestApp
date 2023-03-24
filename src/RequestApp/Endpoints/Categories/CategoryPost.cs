@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Security.Claims;
+using Microsoft.AspNetCore.Mvc;
 using RequestApp.Domain.Products;
 using RequestApp.Infra.Data;
 
@@ -10,8 +11,9 @@ public class CategoryPost
     public static string[] Methods => new string[] { HttpMethod.Post.ToString() };
     public static Delegate Handle = Action;
 
-    public static IResult Action(CategoryRequest categoryRequest, ApplicationDBContext context)
+    public static IResult Action(CategoryRequest categoryRequest, HttpContext http, ApplicationDBContext context)
     {
+        var userId = http.User.Claims.First(c => c.Type == ClaimTypes.NameIdentifier).Value;
         var category = new Category(categoryRequest.Name, "Test", "Test");
 
         if (!category.IsValid)
