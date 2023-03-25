@@ -75,4 +75,10 @@ app.MapMethods(TokenPost.Template, TokenPost.Methods, TokenPost.Handle);
 app.MapMethods(EmployeeGetAll.Template, EmployeeGetAll.Methods, EmployeeGetAll.Handle);
 app.MapMethods(TokenPost.Template, TokenPost.Methods, TokenPost.Handle);
 
+app.UseExceptionHandler();
+app.Map("/error", (HttpContext http) =>
+{
+    return Results.Problem(title: "An error occured", statusCode: 500);
+});
+
 app.Run();
